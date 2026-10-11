@@ -1,0 +1,161 @@
+import { test, expect } from "@playwright/test";
+import { LoginPage } from "../../Page/LoginPage";
+import { BasePage } from "../../Page/BasePage";
+import urls from "../../config/env";
+import { users } from "../../fixtures/TestData";
+import { NewSerialNumber } from "../../Page/NewSerialNumber";
+
+let basePage: BasePage;
+let loginPage: LoginPage;
+let newSerialNumber: NewSerialNumber;
+var inVoiceNo: string;
+
+test.describe('Add a new serial number', () => {
+test.setTimeout(120000);
+    test.beforeEach(async ({ page }) => {
+        basePage = new BasePage(page);
+        loginPage = new LoginPage(page);
+        newSerialNumber = new NewSerialNumber(page);
+        // Go to the UAT environment and login
+        //await basePage.goTo(urls.DIME.uat);
+        //await loginPage.login(users.testAdmin.userName, users.testAdmin.passWord);
+        
+    });
+
+    test('Validate serial number should be in proper format ', async ({ page }) => {
+    })
+    
+    test('Add a new serial number with valid format ', async ({ page }) => {
+        // let projectNoPart1: String = basePage.generateRandomNumber(4);
+        // let projectNoPart2: String = basePage.generateRandomNumber(4);
+        // let projectNo: String = projectNoPart1 + "-" + projectNoPart2;
+        // console.log("Project no is:" + projectNo);
+        await basePage.goTo(urls.DIME.uat);
+        //await basePage.waitForPageLoad();
+        await page.waitForTimeout (7000);
+        await loginPage.login(users.testAdmin.userName, users.testAdmin.passWord);
+        // await page.waitForTimeout (7000);
+        // await newSerialNumber.assignNewSerialNumber("Concurrence");
+
+        await page.waitForTimeout (7000);
+
+        await page.locator('span').filter({ hasText: 'Town' }).click();
+  await page.locator('span').filter({ hasText: 'Town' }).click();
+  await page.locator('.react-select__input-container').first().click();
+  await page.getByRole('option', { name: 'UNKNOWN' }).click();
+  await page.locator('span').filter({ hasText: /^Project$/ }).click();
+  await page.locator('#react-select-5-input').fill('93');
+  await page.locator('.react-select__control.react-select__control--is-focused > .react-select__value-container > .react-select__input-container').click();
+  await page.locator('#react-select-5-input').fill('0903');
+  await page.getByRole('option', { name: '-0903 - Automationtest' }).click();
+  await page.locator('#search-panel-host').getByRole('button', { name: 'Search' }).click();
+  //await page.goto('https://ctgovexec.sharepoint.com/sites/DOT-IRMS-Test?project=0903-0903&tab=milestone-dates&page=ProjectInfo');
+  await page.getByRole('button', { name: 'Cost Estimates' }).click();
+  await page.getByRole('button', { name: 'Title Search' }).click();
+  await page.getByRole('button', { name: 'ROW Agreements' }).click();
+  await page.getByRole('button', { name: 'Relocation Survey' }).click();
+  await page.getByRole('button', { name: 'Temps' }).click();
+  await page.getByRole('listitem').filter({ hasText: 'concurrence' }).locator('i').click();
+  await page.getByText('904').click();
+  await page.getByText('Contacts').click();
+  //await page.locator('#onnd8e-container').getByRole('row').locator('div').filter({ hasText: 'IMPACT TYPE' }).nth(3).click();
+  //await page.locator('#onnd8e-container').getByRole('row').locator('div').filter({ hasText: 'IMPACT TYPE' }).nth(3).click();
+  await page.getByText('Property Impacts').click();
+  await page.getByText('Property Impacts').click();
+//   await page.getByText('Property Impacts').click();
+//   await page.getByText('Property Impacts').click();
+  await page.getByText('Existing Contacts').click();
+  await page.getByText('Existing Contacts').click();
+  await page.getByText('Contact Information').click();
+  await page.getByText('Contact Information').click();
+  await page.getByText('Administration').click();
+ // await page.getByText('').nth(1).click();
+  await page.getByText('Property Impacts').click();
+  await page.getByRole('button', { name: 'MTG/District Permit' }).click();
+  await page.getByRole('button', { name: 'Archive' }).click();
+  await page.getByRole('button', { name: 'General Info' }).click();
+  await page.locator('label').filter({ hasText: 'Yes' }).click();
+  await page.locator('label').filter({ hasText: 'No' }).click();
+  await page.getByText('Appraisals').click();
+  await page.locator('span').filter({ hasText: /^Ball-In-Court$/ }).locator('div').nth(2).click();
+  await page.getByText('Property Impacts').click();
+  await page.getByText('Property Impacts').click();
+  await page.locator('#main-content').getByText('Appraisals').click();
+  await page.locator('#main-content').getByText('Appraisals').click();
+  await page.getByText('Existing Appraisal Valuations', { exact: true }).click();
+  await page.getByText('Existing Appraisal Valuations', { exact: true }).click();
+  await page.getByText('Acquisitions').click();
+  await page.locator('span').filter({ hasText: ' Property Impacts' }).nth(1).click();
+  await page.getByText('Property Impacts').click();
+  await page.getByLabel('Relocation Required').locator('label').filter({ hasText: 'No' }).click();
+  await page.getByLabel('Relocation Required').locator('label').filter({ hasText: 'Yes' }).click();
+  await page.getByRole('button', { name: 'Relocations' }).click();
+  await page.getByRole('button', { name: 'Litigation' }).click();
+  await page.getByRole('button', { name: 'Negotiations' }).click();
+  await page.locator('span').filter({ hasText: /^Friendly$/ }).locator('i').click();
+  await page.locator('span').filter({ hasText: /^Friendly$/ }).locator('i').click();
+  await page.locator('span').filter({ hasText: /^UnFriendly$/ }).locator('i').click();
+  //await page.locator('#TextField1198').click();
+  //await page.locator('#TextField1198').fill('123');
+  await page.getByText('UnFriendlyAcceptance').click();
+  await page.getByText('Titles').click();
+  await page.getByText('Property Impacts').click();
+  await page.getByText('Property Impacts').click();
+  await page.locator('#titles').getByText('Titles', { exact: true }).click();
+  await page.locator('#titles').getByText('Titles', { exact: true }).click();
+ // await page.locator('.ag-header-cell.ag-column-first.ag-header-cell-sortable.ag-header-cell-wrap-text.ag-focus-managed.ag-header-active > .ag-header-cell-comp-wrapper > .ag-cell-label-container > .ag-header-cell-label').click();
+  //await page.locator('.ag-header-cell.ag-column-first.ag-header-cell-sortable.ag-header-cell-wrap-text.ag-focus-managed.ag-header-active > .ag-header-cell-comp-wrapper > .ag-cell-label-container > .ag-header-cell-label').click();
+  await page.getByText('Received From').click();
+  await page.getByText('Type', { exact: true }).click();
+  await page.getByRole('button', { name: 'Condemnation' }).click();
+  await page.getByRole('button', { name: 'MTG' }).click();
+  await page.getByRole('button', { name: 'Recording Information' }).click();
+  await page.getByRole('button', { name: 'PM Release' }).click();
+  await page.getByText('Property Management').nth(0).click();
+  await page.getByText('Property Impacts').click();
+  await page.getByText('Property Impacts').click();
+  await page.locator('#main-content').getByText('Property Management').nth(1).click();
+  await page.locator('#main-content').getByText('Property Management').nth(1).click();
+  await page.getByRole('button', { name: 'Release' }).click();
+  await page.getByRole('button', { name: 'Lease', exact: true }).click();
+  await page.getByRole('button', { name: 'Concurrence' }).click();
+  await page.getByText('Returned From Units').click();
+  await page.getByText('Returned From Units').click();
+  await page.getByText('Assembled Parcels').click();
+  await page.getByText('Assembled Parcels').click();
+  await page.getByText('Property Maintenance').click();
+  await page.getByText('Property Impacts').click();
+  await page.getByText('Property Impacts').click();
+  await page.locator('#property-maintenance').getByText('Property Maintenance').click();
+  await page.locator('#property-maintenance').getByText('Property Maintenance').click();
+  await page.getByRole('button', { name: 'Building Information' }).click();
+  await page.getByRole('button', { name: 'Utility Shutoff' }).click();
+  await page.getByRole('button', { name: 'Demolitions' }).click();
+  await page.getByRole('button', { name: 'Maintenance Tracking' }).click();
+  await page.getByRole('listitem').filter({ hasText: 'EPIU' }).click();
+  await page.getByText('EPIU').click();
+  await page.getByText('Property Impacts').click();
+  await page.getByText('Property Impacts').click();
+  await page.locator('#main-content').getByText('EPIU').click();
+  await page.locator('#main-content').getByText('EPIU').click();
+  await page.locator('#search-panel-host').getByText('Documents', { exact: true }).click();
+  await page.getByText('Property Impacts').click();
+  await page.getByText('Property Impacts').click();
+ // await page.locator('#main-content').getByText('Documents').click();
+ // await page.locator('#main-content').getByText('Documents').click();
+  await page.getByRole('button', { name: 'List View' }).click();
+  await page.getByRole('button', { name: 'Tree View' }).click();
+        
+    })
+
+    
+
+
+})
+
+
+
+
+
+
+

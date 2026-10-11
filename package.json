@@ -1,0 +1,21 @@
+{
+  "name": "ROWMS",
+  "version": "2.10.0.1",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.13.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@types/exceljs": "^0.5.3",
+    "exceljs": "^4.4.0",
+    "playwright": "^1.55.0"
+  }
+}
